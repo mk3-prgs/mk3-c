@@ -1,0 +1,5 @@
+{"adc_init", adc_init, "Init ADC"},
+{"adc", adc, "Read ADC data", 0},
+{"adc_cal", adc_cal, "Calibrate ADC", 0},
+{"adc_pwr", adc_pwr, "Enable/Disable 4..20ma", 0},
+{"f_adc", f_adc, "ADC sample", 0},

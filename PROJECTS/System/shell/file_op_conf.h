@@ -1,0 +1,13 @@
+{"mkfs", mkfs, "Create file system." },
+{"cd", cd, "Смена текущего каталога."},
+{"mkdir", mkdir, "Создание директории."},
+{"fdump", fdump, "Damp file."},
+{"pwd", pwd, "текущий каталог."},
+{"ls", ls, "Список файлов."},
+{"rm", rm, "Удаление файла."},
+{"cp", cp, "Копирование файлов. [ cp src dst ]"},
+{"cat", cat, "Печать файла."},
+{"fs", fs, "Show volume status"},
+{"label", label, "Имя тома"},
+{"touch", touch, "Создать файл."},
+

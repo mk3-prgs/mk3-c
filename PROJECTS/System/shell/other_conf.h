@@ -1,0 +1,17 @@
+{"rst", rst, "RESET 0 / 1"},
+{"lcd", lcd, "Инициализация LCD."},
+{"sat", sat, "Контрастность LCD."},
+{"led", led, "Яркость подсветки LCD."},
+{"sol_init", sol_init, "Управление PWM выходом."},
+{"sol", sol, "Управление PWM выходом."},
+{"spi_ini", spi_ini, "Инициализация spi_io"},
+{"spi", spi, "Тест ввода/вывода spi_io."},
+{"beep", beep, "Свисток."},
+{"prf", prf, "Работа с профилем:\n  prf [rw | wr | adr | adr data]"},
+/*
+{"img", img, "image out"},
+{"ili", ili, "test ili9341"},
+{"fnt", fnt, "test Fonts ili9341"},
+{"ili_init", ili_init, "init ili9341"},
+{"max6675", max6675, "Read Temperature"},
+*/

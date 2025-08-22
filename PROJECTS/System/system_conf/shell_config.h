@@ -1,0 +1,20 @@
+#ifndef _SHELL_CONFIG_DEFINED
+#define _SHELL_CONFIG_DEFINED
+
+#define CONFIG_SYS
+#define CONFIG_FILE_OP
+#define CONFIG_DISK_OP
+#define CONFIG_SD_CARD
+#define CONFIG_OTHER
+
+#define CONFIG_IO_TASK
+#undef CONFIG_SENSORS
+
+#define CONFIG_ADC
+#undef CONFIG_NET
+#undef CONFIG_DIO
+
+#define CONFIG_DAC
+#undef  CONFIG_GLCD
+
+#endif // _SHELL_CONFIG_DEFINED

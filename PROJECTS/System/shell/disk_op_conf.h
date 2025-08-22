@@ -1,0 +1,6 @@
+{"di", di, "Disk initialize."},
+{"ds", ds, "Disk status."},
+{"dd", dd, "Disk dump.  dd [sector (0)] [numb sectors (1)] [data (ff)]"},
+{"dw", dw, "Disk write. dw [sector (0)] [numb sectors (1)] [data (ff)]"},
+{"mount", mount, "Mount volume."},
+{"umount", umount, "UNmount volume."},

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="dac" />
+		<Option platforms="Unix;" />
+		<Option pch_mode="2" />
+		<Option compiler="arm-elf-gcc" />
+		<Build>
+			<Target title="stm32">
+				<Option platforms="Unix;" />
+				<Option output="bin/dac" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/" />
+				<Option object_output="obj/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-mcpu=cortex-m3" />
+					<Add option="-mthumb" />
+					<Add option="-msoft-float" />
+					<Add option="-Os" />
+					<Add option="-mtune=cortex-m3" />
+					<Add option="-ffunction-sections" />
+					<Add option="-fdata-sections" />
+					<Add option="-DGD32F10X_HD" />
+					<Add directory="../../../gd32f1xx_lib/core" />
+					<Add directory="../../../gd32f1xx_lib/inc" />
+					<Add directory="../../../FreeRTOS/portable/GCC/ARM_CM3" />
+					<Add directory="../../../FreeRTOS/include" />
+					<Add directory="../../../ff" />
+					<Add directory="../LIBs" />
+					<Add directory="../dac" />
+					<Add directory="../system_conf" />
+				</Compiler>
+				<Linker>
+					<Add option="-mcpu=cortex-m3" />
+					<Add option="-mtune=cortex-m3" />
+					<Add option="-mthumb" />
+					<Add option="-specs=nano.specs" />
+					<Add option="-specs=nosys.specs" />
+					<Add option="-nostartfiles" />
+					<Add option="-Wl,-Map=bin/adc.map,--cref" />
+					<Add option="-L../ld" />
+					<Add option="-Wl,-T../ld/flash.ld" />
+					<Add option="-Wl,--gc-sections" />
+					<Add option="-Wl,-R,../bin/system.sym" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="rm -f $(TARGET_OUTPUT_FILE).sym" />
+					<Add before="rm -f $(TARGET_OUTPUT_FILE).bin" />
+					<Add before="rm -f $(TARGET_OUTPUT_FILE).hex" />
+					<Add before="rm -f $(TARGET_OUTPUT_FILE)_b0.hex" />
+					<Add after="arm-none-eabi-size $(TARGET_OUTPUT_FILE)" />
+					<Add after="arm-none-eabi-objcopy -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).hex" />
+					<Add after="# arm-none-eabi-objcopy -O ihex -R .text -R .rodata -R .data -R .bss -R .bss0 $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE)_b0.hex" />
+					<Add after="arm-none-eabi-objcopy -S -O binary $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).bin" />
+					<Add after="# arm-none-eabi-objcopy -x --extract-symbol $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).sym" />
+					<Add after="# arm-none-eabi-nm -n $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_FILE).sss" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Os" />
+		</Compiler>
+		<Unit filename="../bin/system.sym" />
+		<Unit filename="../ld/flash.ld" />
+		<Unit filename="../ld/ram.ld" />
+		<Unit filename="dac.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="startup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

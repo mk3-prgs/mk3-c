@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="mb_io" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="x86">
+				<Option output="../../../../../../../bin/mb_io" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-D__OPTIMIZE__" />
+					<Add directory="../../mb_io" />
+					<Add directory="../libmodbus" />
+				</Compiler>
+				<Linker>
+					<Add library="pthread" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../file_io.h" />
+		<Unit filename="../io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../io.h" />
+		<Unit filename="../libmodbus/config.h" />
+		<Unit filename="../libmodbus/modbus-data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libmodbus/modbus-private.h" />
+		<Unit filename="../libmodbus/modbus-rtu-private.h" />
+		<Unit filename="../libmodbus/modbus-rtu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libmodbus/modbus-rtu.h" />
+		<Unit filename="../libmodbus/modbus-version.h" />
+		<Unit filename="../libmodbus/modbus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libmodbus/modbus.h" />
+		<Unit filename="mb_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mk2_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="modbus_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,28 @@
+-mcpu=cortex-m0
+-ffunction-sections
+-fdata-sections
+
+STM32F10X_MD
+USE_STDPERIPH_DRIVER
+SYSCLK_FREQ_72MHz
+
+
+-Wl,-Map,map.txt
+-mcpu=cortex-m3
+-mthumb
+-nostartfiles
+-Wl,-Tld/stm32.ld
+-Xlinker
+--gc-sections
+
+arm-none-eabi-size $(TARGET_OUTPUT_FILE)
+arm-none-eabi-objcopy -O ihex -R .eeprom -R .eesafe $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).hex
+arm-none-eabi-objcopy -S -O binary $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).bin
+
+
+////////////// LIBs ///////////////
+-ffunction-sections
+-fdata-sections
+
+STM32F10X_MD
+USE_STDPERIPH_DRIVER

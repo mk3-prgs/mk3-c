@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="play" />
+		<Option pch_mode="2" />
+		<Option compiler="arm-elf-gcc" />
+		<Build>
+			<Target title="gd32">
+				<Option output="bin/play" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-mcpu=cortex-m3" />
+					<Add option="-mthumb" />
+					<Add option="-msoft-float" />
+					<Add option="-O2" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-mtune=cortex-m3" />
+					<Add option="-ffunction-sections" />
+					<Add option="-fdata-sections" />
+					<Add option="-DGD32F10X_HD" />
+					<Add directory="../../../ff" />
+					<Add directory="../../../FreeRTOS/portable/Common" />
+					<Add directory="../../../FreeRTOS/portable/MemMang" />
+					<Add directory="../../../FreeRTOS/portable/GCC/ARM_CM3" />
+					<Add directory="../../../FreeRTOS/include" />
+					<Add directory="../../../gd32f1xx_lib/core" />
+					<Add directory="../../../gd32f1xx_lib/inc" />
+					<Add directory="decoder/helix_fixpt/pub" />
+					<Add directory="decoder/helix_fixpt/real" />
+					<Add directory="mp3" />
+					<Add directory="../play" />
+					<Add directory="../LIBs" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-mcpu=cortex-m3" />
+					<Add option="-mtune=cortex-m3" />
+					<Add option="-mthumb" />
+					<Add option="-specs=nano.specs" />
+					<Add option="-specs=nosys.specs" />
+					<Add option="-nostartfiles" />
+					<Add option="-Wl,--gc-sections" />
+					<Add option="-Wl,-Map=bin/play.map,--cref" />
+					<Add option="-L../ld" />
+					<Add option="-Wl,-Tstm32f103rc.ld" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="arm-none-eabi-size $(TARGET_OUTPUT_FILE)" />
+					<Add after="arm-none-eabi-objcopy -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).hex" />
+					<Add after="arm-none-eabi-objcopy -x --extract-symbol $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).sym" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Unit filename="../../../FreeRTOS/croutine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../FreeRTOS/event_groups.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../FreeRTOS/include/FreeRTOSConfig.h" />
+		<Unit filename="../../../FreeRTOS/list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../FreeRTOS/portable/GCC/ARM_CM3/port.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../FreeRTOS/portable/GCC/ARM_CM3/portmacro.h" />
+		<Unit filename="../../../FreeRTOS/portable/MemMang/heap_2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../FreeRTOS/queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../FreeRTOS/tasks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../FreeRTOS/timers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/MX25L.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/MX25L.h" />
+		<Unit filename="../../../ff/diskio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/diskio.h" />
+		<Unit filename="../../../ff/ff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/ff.h" />
+		<Unit filename="../../../ff/ffconf.h" />
+		<Unit filename="../../../ff/ffsystem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/ffunicode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/flash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/flash.h" />
+		<Unit filename="../../../ff/fm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/fm.h" />
+		<Unit filename="../../../ff/sd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/sd.h" />
+		<Unit filename="../../../ff/sdcard.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/sdcard.h" />
+		<Unit filename="../../../ff/sf_25.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/sf_25.h" />
+		<Unit filename="../../../ff/spi_df.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../ff/spi_df.h" />
+		<Unit filename="../../../gd32f1xx_lib/core/bit_field.h" />
+		<Unit filename="../../../gd32f1xx_lib/core/core_cm3.h" />
+		<Unit filename="../../../gd32f1xx_lib/core/core_cmFunc.h" />
+		<Unit filename="../../../gd32f1xx_lib/core/core_cmInstr.h" />
+		<Unit filename="../../../gd32f1xx_lib/core/gd32f10x.h" />
+		<Unit filename="../../../gd32f1xx_lib/core/gd32f10x_libopt.h" />
+		<Unit filename="../../../gd32f1xx_lib/core/startup_gd32f10x_hd.s" />
+		<Unit filename="../../../gd32f1xx_lib/core/system_gd32f10x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/core/system_gd32f10x.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_dac.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_dbg.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_dma.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_gpio.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_misc.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_rcu.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_sdio.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_spi.h" />
+		<Unit filename="../../../gd32f1xx_lib/inc/gd32f10x_timer.h" />
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_dac.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_dbg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_dma.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_fmc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_gpio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_rcu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_sdio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_spi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../gd32f1xx_lib/src/gd32f10x_usart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../LIBs/lib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../LIBs/lib.h" />
+		<Unit filename="../LIBs/xprintf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../LIBs/xprintf.h" />
+		<Unit filename="../ld/stm32f103rc.ld" />
+		<Unit filename="board.h" />
+		<Unit filename="dac/dac.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/mp3dec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/mp3tabs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/arm/asmpoly_thumb2.S" />
+		<Unit filename="decoder/helix_fixpt/real/assembly.h" />
+		<Unit filename="decoder/helix_fixpt/real/bitstream.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/buffers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/coder.h" />
+		<Unit filename="decoder/helix_fixpt/real/dct32.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/dequant.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/dqchan.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/huffman.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/hufftabs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/imdct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/scalfact.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/stproc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/subband.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder/helix_fixpt/real/trigtabs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="exceptions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="exceptions.h" />
+		<Unit filename="fileInfo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fileInfo.h" />
+		<Unit filename="includes.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mk_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mp3/dacTask.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mp3/dacTask.h" />
+		<Unit filename="mp3/mp3Task.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mp3/mp3Task.h" />
+		<Unit filename="mp3/playerTask.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mp3/playerTask.h" />
+		<Unit filename="mp3/tasksPrior.h" />
+		<Unit filename="play.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="usart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="usart.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

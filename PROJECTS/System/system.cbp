@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="system" />
+		<Option platforms="Windows;Unix;" />
+		<Option pch_mode="2" />
+		<Option compiler="arm-elf-gcc" />
+		<Build>
+			<Target title="GD32">
+				<Option platforms="Unix;" />
+				<Option output="bin/system" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-mcpu=cortex-m3" />
+					<Add option="-mthumb" />
+					<Add option="-msoft-float" />
+					<Add option="-Os" />
+					<Add option="-Wall" />
+					<Add option="-mtune=cortex-m3" />
+					<Add option="-mfix-cortex-m3-ldrd" />
+					<Add option="-fno-common" />
+					<Add option="-ffunction-sections" />
+					<Add option="-fdata-sections" />
+					<Add option="-DGD32F10X_HD" />
+					<Add option="-DWITH_RTOS" />
+					<Add directory="system_conf" />
+					<Add directory="../../FreeRTOS/portable/GCC/ARM_CM3" />
+					<Add directory="../../FreeRTOS/include" />
+					<Add directory="../../gd32f1xx_lib/core" />
+					<Add directory="../../gd32f1xx_lib/inc" />
+					<Add directory="../../gd32libs" />
+					<Add directory="../../ff" />
+					<Add directory="src" />
+					<Add directory="mb_io" />
+					<Add directory="shell" />
+					<Add directory="LIBs" />
+					<Add directory="sensors" />
+					<Add directory="sensors/sht3x" />
+					<Add directory="sensors/w1" />
+					<Add directory="Ink/net_mk2" />
+					<Add directory="LIBs/mt12864b" />
+					<Add directory="LIBs/hw239" />
+					<Add directory="TFT/ili9341" />
+				</Compiler>
+				<Linker>
+					<Add option="-mcpu=cortex-m3" />
+					<Add option="-mtune=cortex-m3" />
+					<Add option="-mthumb" />
+					<Add option="-specs=nano.specs" />
+					<Add option="-specs=nosys.specs" />
+					<Add option="-nostartfiles" />
+					<Add option="-Wl,-Map=bin/system.map,--cref" />
+					<Add option="-L./ld" />
+					<Add option="-Wl,-Tstm32f103rc.ld" />
+					<Add option="-Wl,-R,../bin/system.sym" />
+					<Add option="-Wl,--gc-sections" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="rm -f $(TARGET_OUTPUT_FILE).sym" />
+					<Add before="# rm -f $(TARGET_OUTPUT_FILE).bin" />
+					<Add before="rm -f $(TARGET_OUTPUT_FILE).hex" />
+					<Add after="# arm-none-eabi-objcopy -O ihex -R .text -R .rodata -R .data -R .bss -R .bss0 $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE)_b0.hex" />
+					<Add after="# arm-none-eabi-objcopy -S -O binary $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).bin" />
+					<Add after="# arm-none-eabi-nm -n $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_FILE).sss" />
+					<Add after="arm-none-eabi-size $(TARGET_OUTPUT_FILE)" />
+					<Add after="arm-none-eabi-objcopy -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).hex" />
+					<Add after="arm-none-eabi-objcopy -x --extract-symbol $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).sym" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Unit filename="../../FreeRTOS/croutine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FreeRTOS/include/FreeRTOS.h" />
+		<Unit filename="../../FreeRTOS/include/StackMacros.h" />
+		<Unit filename="../../FreeRTOS/include/portable.h" />
+		<Unit filename="../../FreeRTOS/include/projdefs.h" />
+		<Unit filename="../../FreeRTOS/include/queue.h" />
+		<Unit filename="../../FreeRTOS/include/semphr.h" />
+		<Unit filename="../../FreeRTOS/include/stack_macros.h" />
+		<Unit filename="../../FreeRTOS/include/task.h" />
+		<Unit filename="../../FreeRTOS/include/timers.h" />
+		<Unit filename="../../FreeRTOS/list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FreeRTOS/portable/GCC/ARM_CM3/port.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FreeRTOS/portable/GCC/ARM_CM3/portmacro.h" />
+		<Unit filename="../../FreeRTOS/portable/MemMang/heap_2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FreeRTOS/queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FreeRTOS/tasks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FreeRTOS/timers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/MX25L.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/MX25L.h" />
+		<Unit filename="../../ff/at45db.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/at45db.h" />
+		<Unit filename="../../ff/ff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/ff.h" />
+		<Unit filename="../../ff/ffsystem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/ffunicode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/flash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/flash.h" />
+		<Unit filename="../../ff/fm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/fm.h" />
+		<Unit filename="../../ff/sd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/sd.h" />
+		<Unit filename="../../ff/sdcard.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/sdcard.h" />
+		<Unit filename="../../ff/sf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/sf.h" />
+		<Unit filename="../../ff/sf_25.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/sf_25.h" />
+		<Unit filename="../../ff/spi_df.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ff/spi_df.h" />
+		<Unit filename="../../gd32f1xx_lib/core/core_cm3.h" />
+		<Unit filename="../../gd32f1xx_lib/core/core_cmFunc.h" />
+		<Unit filename="../../gd32f1xx_lib/core/core_cmInstr.h" />
+		<Unit filename="../../gd32f1xx_lib/core/gd32f10x.h" />
+		<Unit filename="../../gd32f1xx_lib/core/startup_gd32f10x_hd.s" />
+		<Unit filename="../../gd32f1xx_lib/core/sys_interrupt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/core/system_gd32f10x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/core/system_gd32f10x.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_adc.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_bkp.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_can.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_crc.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_dac.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_dbg.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_dma.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_enet.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_exmc.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_exti.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_fmc.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_fwdgt.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_gpio.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_i2c.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_misc.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_pmu.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_rcu.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_rtc.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_sdio.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_spi.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_timer.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_usart.h" />
+		<Unit filename="../../gd32f1xx_lib/inc/gd32f10x_wwdgt.h" />
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_bkp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_dac.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_dma.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_exti.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_fmc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_fwdgt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_gpio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_pmu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_rcu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_rtc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_sdio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_spi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_usart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32f1xx_lib/src/gd32f10x_wwdgt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32libs/dma/dma.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32libs/dma/dma.h" />
+		<Unit filename="../../gd32libs/modbus/modbus_rtu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32libs/modbus/modbus_rtu.h" />
+		<Unit filename="../../gd32libs/mutex/mutex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32libs/mutex/mutex.h" />
+		<Unit filename="../../gd32libs/usart/usart_bus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../gd32libs/usart/usart_bus.h" />
+		<Unit filename="LIBs/bkp_data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LIBs/bkp_data.h" />
+		<Unit filename="LIBs/lib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LIBs/lib.h" />
+		<Unit filename="LIBs/mtc16201/pwm3_out.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LIBs/mtc16201/pwm3_out.h" />
+		<Unit filename="LIBs/mtc16201/pwm_out.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LIBs/mtc16201/pwm_out.h" />
+		<Unit filename="LIBs/rtc_32f1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LIBs/rtc_32f1.h" />
+		<Unit filename="LIBs/xprintf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LIBs/xprintf.h" />
+		<Unit filename="ld/stm32_common.ld" />
+		<Unit filename="ld/stm32_sec_flash.ld" />
+		<Unit filename="ld/stm32f103rc.ld" />
+		<Unit filename="mb_io/file_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mb_io/file_io.h" />
+		<Unit filename="sensors/ds1624/ds1624.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensors/i2c_bus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensors/i2c_bus.h" />
+		<Unit filename="sensors/sht3x/sht3x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensors/sht3x/sht3x.h" />
+		<Unit filename="sensors/sht3x/sht3x_platform.h" />
+		<Unit filename="sensors/w1/ds1820.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensors/w1/ds1820.h" />
+		<Unit filename="sensors/w1/find_ds.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensors/w1/find_ds.h" />
+		<Unit filename="shell/adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/adc.h" />
+		<Unit filename="shell/adc_conf.h" />
+		<Unit filename="shell/dac.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/dac.h" />
+		<Unit filename="shell/dac_op_conf.h" />
+		<Unit filename="shell/dfdata.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/dfdata.h" />
+		<Unit filename="shell/disk_op.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/disk_op.h" />
+		<Unit filename="shell/disk_op_conf.h" />
+		<Unit filename="shell/file_op.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/file_op.h" />
+		<Unit filename="shell/file_op_conf.h" />
+		<Unit filename="shell/io_task.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/io_task.h" />
+		<Unit filename="shell/io_task_conf.h" />
+		<Unit filename="shell/load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/mk2-c.h" />
+		<Unit filename="shell/other.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/other.h" />
+		<Unit filename="shell/other_conf.h" />
+		<Unit filename="shell/sd_card.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/sd_card.h" />
+		<Unit filename="shell/sd_card_conf.h" />
+		<Unit filename="shell/sens.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/sens.h" />
+		<Unit filename="shell/sens_conf.h" />
+		<Unit filename="shell/shell.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/shell.h" />
+		<Unit filename="shell/sys.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell/sys.h" />
+		<Unit filename="shell/sys_conf.h" />
+		<Unit filename="src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/mb_1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/mb_1.h" />
+		<Unit filename="src/mb_usart1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/mk_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/spi_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/spi_io.h" />
+		<Unit filename="src/usart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/usart.h" />
+		<Unit filename="system_conf/FreeRTOSConfig.h" />
+		<Unit filename="system_conf/diskio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="system_conf/diskio.h" />
+		<Unit filename="system_conf/ffconf.h" />
+		<Unit filename="system_conf/main.h" />
+		<Unit filename="system_conf/shell_config.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

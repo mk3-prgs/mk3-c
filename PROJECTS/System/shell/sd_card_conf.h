@@ -1,0 +1,6 @@
+{"sdi", sdi, "SD info"},
+{"sdr", sdr, "SD read "},
+{"sdw", sdw, "SD write"},
+{"sdl", sdl, "SD lock/unlock"},
+{"sde", sde, "SD eraase"},
+{"sqe", sqe, "SQ 4K eraase"},
