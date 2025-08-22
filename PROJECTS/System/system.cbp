@@ -22,8 +22,6 @@
 					<Add option="-mtune=cortex-m3" />
 					<Add option="-mfix-cortex-m3-ldrd" />
 					<Add option="-fno-common" />
-					<Add option="-ffunction-sections" />
-					<Add option="-fdata-sections" />
 					<Add option="-DGD32F10X_HD" />
 					<Add option="-DWITH_RTOS" />
 					<Add directory="system_conf" />
@@ -56,7 +54,6 @@
 					<Add option="-L./ld" />
 					<Add option="-Wl,-Tstm32f103rc.ld" />
 					<Add option="-Wl,-R,../bin/system.sym" />
-					<Add option="-Wl,--gc-sections" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="rm -f $(TARGET_OUTPUT_FILE).sym" />
@@ -291,6 +288,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="sensors/i2c_bus.h" />
+		<Unit filename="sensors/mh-z14a/usart2.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="sensors/sht3x/sht3x.c">
 			<Option compilerVar="CC" />
 		</Unit>
